@@ -573,6 +573,16 @@ namespace Comercial_Solutions.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondo4 {
+            get {
+                object obj = ResourceManager.GetObject("fondo4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap heart {
             get {
                 object obj = ResourceManager.GetObject("heart", resourceCulture);
@@ -746,6 +756,16 @@ namespace Comercial_Solutions.Properties {
         internal static System.Drawing.Bitmap refresh {
             get {
                 object obj = ResourceManager.GetObject("refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rev_Utility_Truck_for_wraps {
+            get {
+                object obj = ResourceManager.GetObject("rev_Utility_Truck_for_wraps", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
