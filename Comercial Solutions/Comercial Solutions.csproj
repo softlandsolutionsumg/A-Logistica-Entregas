@@ -39,6 +39,9 @@
     <Reference Include="i3nRiqJSON">
       <HintPath>..\..\i3nRiqJSON\i3nRiqJSON\bin\Debug\i3nRiqJSON.dll</HintPath>
     </Reference>
+    <Reference Include="Navegador">
+      <HintPath>..\..\..\..\Dropbox\i3nRiq\Mi maletin\Librerias\C#\Navegador\Navegador.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,6 +64,36 @@
     </Compile>
     <Compile Include="Forms\Areas\Logistica\beta3.designer.cs">
       <DependentUpon>beta3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_asignacion_vehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_asignacion_vehiculo.designer.cs">
+      <DependentUpon>frm_asignacion_vehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_capacidad_ruta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_capacidad_ruta.designer.cs">
+      <DependentUpon>frm_capacidad_ruta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_Logistica_autorizacion_salida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_Logistica_autorizacion_salida.designer.cs">
+      <DependentUpon>frm_Logistica_autorizacion_salida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_Logistica_envios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_Logistica_envios.designer.cs">
+      <DependentUpon>frm_Logistica_envios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_logistica_historial_factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Logistica\frm_logistica_historial_factura.designer.cs">
+      <DependentUpon>frm_logistica_historial_factura.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Areas\Logistica\frm_Logistica_ruta.cs">
       <SubType>Form</SubType>
@@ -114,6 +147,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Areas\Logistica\beta3.resx">
       <DependentUpon>beta3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Logistica\frm_asignacion_vehiculo.resx">
+      <DependentUpon>frm_asignacion_vehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Logistica\frm_capacidad_ruta.resx">
+      <DependentUpon>frm_capacidad_ruta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Logistica\frm_Logistica_autorizacion_salida.resx">
+      <DependentUpon>frm_Logistica_autorizacion_salida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Logistica\frm_Logistica_envios.resx">
+      <DependentUpon>frm_Logistica_envios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Logistica\frm_logistica_historial_factura.resx">
+      <DependentUpon>frm_logistica_historial_factura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Areas\Logistica\frm_Logistica_ruta.resx">
       <DependentUpon>frm_Logistica_ruta.cs</DependentUpon>
@@ -425,10 +473,10 @@
     <None Include="Resources\d %2833%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\rev-Utility-Truck-for-wraps.png" />
+    <None Include="Resources\fondo4.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fondo4.png" />
+    <None Include="Resources\rev-Utility-Truck-for-wraps.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

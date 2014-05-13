@@ -14,14 +14,18 @@ using Comercial_Solutions.Forms.Areas;
 using Comercial_Solutions.Clases;
 using i3nRiqJSON;
 using Generador_de_fechas;
-
+using Comercial_Solutions.Forms.Principal;
 
 namespace Comercial_Solutions.Forms.Areas.Logistica
 {
     public partial class frm_Logistica_ruta : Form
     {
+        int X = 0;
+        int Y = 0;
         public frm_Logistica_ruta()
         {
+            X = Propp.X;
+            Y = Propp.Y;
             InitializeComponent();
             bt_confirmar.Hide();
             // string stQuery = "select tbm_factura_id_factura as 'Factura', tx_ubicacionpedido as 'Ubicacion', tx_estadopedido as 'Estado' from tbm_estadopedido, tbm_ubicacionpedido, tbt_historialenvios where tbt_historialenvios.tbm_ubicacionpedido_id_ubicacionpedido=1 and tbt_historialenvios.tbm_ubicacionpedido_id_ubicacionpedido=tbm_ubicacionpedido.id_ubicacionpedido and tbt_historialenvios.tbm_estadopedido_id_estadopedido=1 and tbt_historialenvios.tbm_estadopedido_id_estadopedido=tbm_estadopedido.id_estadopedido";
@@ -162,6 +166,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
             creardetalle();
             creardetalle();
 
+            /*
             Vehiculos_rutas x = new Vehiculos_rutas();
             Fechalaborales c= new Fechalaborales();
             // Console.WriteLine("--" + x.RUTAXDEPARTAMENTO(textBox4.Text));
@@ -191,7 +196,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
             //DUDA
 
-            
+            */
            // lbl_ruta.Text=("hola mundo");
         }
 
@@ -202,13 +207,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
         private void button2_Click(object obSender, EventArgs evE)
         {
-            Obtener_factura();
-            //crear a que factura hacerle BUSQUEDA
-            
-            buscarpendientesunicamente();
-            //  string stQuery = "select tbm_factura_id_factura as 'Factura', tx_ubicacionpedido as 'Ubicacion', tx_estadopedido as 'Estado' from tbm_estadopedido, tbm_ubicacionpedido, tbt_historialenvios where tbm_factura_id_factura=" + stId_factura + " and tbt_historialenvios.tbm_ubicacionpedido_id_ubicacionpedido=1 and tbt_historialenvios.tbm_ubicacionpedido_id_ubicacionpedido=tbm_ubicacionpedido.id_ubicacionpedido and tbt_historialenvios.tbm_estadopedido_id_estadopedido=1 and tbt_historialenvios.tbm_estadopedido_id_estadopedido=tbm_estadopedido.id_estadopedido";
-            //  ContruirDatagridview(1, stQuery, "select idAplicaciones AS Codigo, txAplicacion AS Descripcion, frAplicacion AS Cantidad from aplicaciones");
-           
+        
         }
 
         public void buscarpendientesunicamente()
@@ -292,7 +291,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
         {
 
             Historial_Envios x = new Historial_Envios();
-            dataGridView1.DataSource = (x.historialarea(1));
+            dataGridView1.DataSource = (x.historialarea(2));
             this.tabControl1.SelectedIndex = 0;
             tabControl1.TabPages.Remove(tabPage2);
             button1.Visible = false;
@@ -320,7 +319,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
                     textBox5.Text = dict["municipio"];
                 }
 
-                ContruirDatagridview(2, stQuery, "");
+               // ContruirDatagridview(2, stQuery, "");
 
                 tabControl1.TabPages.Remove(tabPage2);
                 tabControl1.TabPages.Insert(1, tabPage2);
@@ -579,6 +578,32 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
         }
 
         private void frm_Logistica_ruta_Load(object sender, EventArgs e)
+        {
+            this.Size = new Size(X, Y);
+            this.Location = new Point(250, 56);
+        }
+
+        private void txt_buscar_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Obtener_factura();
+                //crear a que factura hacerle BUSQUEDA
+
+                buscarpendientesunicamente();
+                //  string stQuery = "select tbm_factura_id_factura as 'Factura', tx_ubicacionpedido as 'Ubicacion', tx_estadopedido as 'Estado' from tbm_estadopedido, tbm_ubicacionpedido, tbt_historialenvios where tbm_factura_id_factura=" + stId_factura + " and tbt_historialenvios.tbm_ubicacionpedido_id_ubicacionpedido=1 and tbt_historialenvios.tbm_ubicacionpedido_id_ubicacionpedido=tbm_ubicacionpedido.id_ubicacionpedido and tbt_historialenvios.tbm_estadopedido_id_estadopedido=1 and tbt_historialenvios.tbm_estadopedido_id_estadopedido=tbm_estadopedido.id_estadopedido";
+                //  ContruirDatagridview(1, stQuery, "select idAplicaciones AS Codigo, txAplicacion AS Descripcion, frAplicacion AS Cantidad from aplicaciones");
+           
+
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_buscar_TextChanged(object sender, EventArgs e)
         {
 
         }

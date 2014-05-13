@@ -235,7 +235,7 @@ namespace Comercial_Solutions.Clases
             string stQuery = "select tbm_factura_id_factura,(select tx_ubicacionpedido from tbm_ubicacionpedido where tbm_ubicacionpedido.id_ubicacionpedido=tbt_historialenvios.tbm_ubicacionpedido_id_ubicacionpedido)AS ubicacion, id_historialenvios from tbt_historialenvios WHERE tbm_ubicacionpedido_id_ubicacionpedido =  " + ubicacion + "";
             System.Collections.ArrayList arArray = gCon.consultar(stQuery);
             int inTamano_array = arArray.Count;
-            MessageBox.Show("No de registros en array 1: "+inTamano_array);
+            //MessageBox.Show("No de registros en array 1: "+inTamano_array);
             DataTable dtTable = new DataTable();
             dtTable.Columns.Add("Factura");
             //
@@ -246,7 +246,7 @@ namespace Comercial_Solutions.Clases
             foreach (Dictionary<string, string> dict in arArray)
             {
 
-                MessageBox.Show(dict["tbm_factura_id_factura"]);
+              //  MessageBox.Show(dict["tbm_factura_id_factura"]);
                 
 
                 string stQuery2 = "select id_historialenvios from tbt_historialenvios WHERE tbm_factura_id_factura=" + dict["tbm_factura_id_factura"] + " and (tbm_estadopedido_id_estadopedido =  '3' or tbm_estadopedido_id_estadopedido =  '2') and tbm_ubicacionpedido_id_ubicacionpedido="+ubicacion+"";
@@ -255,18 +255,18 @@ namespace Comercial_Solutions.Clases
               
                     System.Collections.ArrayList arArray2 = gCon.consultar(stQuery2);
                     int inTamano_array2 = arArray2.Count;
-                    MessageBox.Show("No de registros en array 2: " + inTamano_array2);
+                  //  MessageBox.Show("No de registros en array 2: " + inTamano_array2);
                 
                
                 
                 
                  if (inTamano_array2 > 0)
                  {
-                     MessageBox.Show("XX - - - " + stQuery2);  
+                  //   MessageBox.Show("XX - - - " + stQuery2);  
                  }
                  else
                  {
-                     MessageBox.Show("2XX - - - "+stQuery2);  
+                   //  MessageBox.Show("2XX - - - "+stQuery2);  
                    dtTable.Rows.Add(dict["tbm_factura_id_factura"].ToString(), dict["ubicacion"].ToString(), "pendiente");
                      //dt.Rows.Add(new object[] { dict["tbm_factura_id_factura"].ToString() }, new object[] { "hoa" }, new object[] { "hoa" });//+stubicacion);//,"pendiente");
                  }/*  **/

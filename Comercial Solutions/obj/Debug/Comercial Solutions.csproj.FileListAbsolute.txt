@@ -63,3 +63,9 @@ C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug
 C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial_Solutions.Properties.Resources.resources
 C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial Solutions.csproj.GenerateResource.Cache
 C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Logistica.frm_Logistica_ruta.resources
+C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Logistica.frm_Logistica_envios.resources
+C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Logistica.frm_asignacion_vehiculo.resources
+C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Logistica.frm_capacidad_ruta.resources
+C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Logistica.frm_Logistica_autorizacion_salida.resources
+C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Logistica.frm_logistica_historial_factura.resources
+C:\Users\3nR\Documents\GitHub\A-Logistica-Entregas\Comercial Solutions\bin\Debug\Navegador.dll
