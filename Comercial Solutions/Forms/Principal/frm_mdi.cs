@@ -67,7 +67,7 @@ namespace Comercial_Solutions.Forms.Principal
             Y=(Properties.Settings.Default.heighty);
             X=(Properties.Settings.Default.widthx);
             Propp.Y = Y;
-            Propp.X = X;
+            Propp.X = X-75;
             webBrowser1.Size = new Size(X - 75, Y);
             webBrowser1.Location = new Point(250, 56);
             webload.Size = new Size(X - 75, Y);

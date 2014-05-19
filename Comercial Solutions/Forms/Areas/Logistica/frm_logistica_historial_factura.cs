@@ -21,8 +21,12 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 {
     public partial class frm_logistica_historial_factura : Form
     {
+        int X = 0;
+        int Y = 0;
         public frm_logistica_historial_factura()
         {
+            X = Propp.X;
+            Y = Propp.Y;
             InitializeComponent();
 
             //busqueda();
@@ -55,7 +59,8 @@ public void buscarfactura(string nofactura) {
 
         private void frm_logistica_historial_factura_Load(object sender, EventArgs e)
         {
-
+            this.Size = new Size(X, Y);
+            this.Location = new Point(250, 56);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -70,7 +75,7 @@ public void buscarfactura(string nofactura) {
 
         private void barra1_click_buscar_button()
         {
-            buscarfactura(txt_buscar.Text);
+      
         }
 
         public void ultimoestado() {
@@ -86,6 +91,21 @@ public void buscarfactura(string nofactura) {
             //    textBox5.Text = dict["municipio"];
             } 
         
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_buscar_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                buscarfactura(txt_buscar.Text);
+
+            }
         }
     }
 }

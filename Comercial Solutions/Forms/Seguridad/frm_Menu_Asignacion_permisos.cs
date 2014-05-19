@@ -211,5 +211,10 @@ namespace Comercial_Solutions.Forms.Seguridad
 
         }
 
+        private void frm_Menu_Asignacion_permisos_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

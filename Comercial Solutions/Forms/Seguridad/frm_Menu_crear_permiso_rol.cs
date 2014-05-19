@@ -191,7 +191,7 @@ namespace Comercial_Solutions.Forms.Seguridad
                 }
                 db.insertar("1",tabla, dict);   
                 MessageBox.Show("Datos insertados exitosamente");
-                MessageBox.Show(ficherosSeleccionados);        
+                //MessageBox.Show(ficherosSeleccionados);        
             } 
         }
              }
@@ -231,7 +231,7 @@ namespace Comercial_Solutions.Forms.Seguridad
 
         private void frm_Menu_crear_permiso_rol_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+           
         }
 
         private void button1_Click_1(object sender, EventArgs e)

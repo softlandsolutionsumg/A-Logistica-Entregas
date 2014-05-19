@@ -168,55 +168,60 @@ namespace Comercial_Solutions.Clases
             dt.Columns.Add("tx_marca");
            
             //
-            
-            
-            foreach (Dictionary<string, string> dict in array)
+
+            try
             {
-                try
+                foreach (Dictionary<string, string> dict in array)
                 {
-                    string cod = (dict["cod_vehiculo"]);
-                    string placa = (dict["placa_vehiculo"]);
-                    string capacidad = (dict["capacidad"]);
-                    string marca = (dict["tx_marca"]);
-
-
-                    string stQuery2 = "select tbt_vehiculo_cod_vehiculo from tbt_disponibilidadvehiculo where tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo = '" + cod + "' AND (tx_disponibilidadvehiculo = '" + disp1 + "' or tx_disponibilidadvehiculo = '" + disp2 + "' or tx_disponibilidadvehiculo = '" + disp3 + "');";
-  //              string stQuery2 = "select tbt_vehiculo_cod_vehiculo from tbt_disponibilidadvehiculo where tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo = " + dict["cod_vehiculo"].ToString() + " AND (tx_disponibilidadvehiculo = '" + disp1 + "' or tx_disponibilidadvehiculo = '" + disp2 + "')";
-                
-
-                    System.Collections.ArrayList arArray2 = gCon.consultar(stQuery2);
-                    int inTamano_array2 = arArray2.Count;
-
-                  //  Console.WriteLine("ENVIADO: " + inTamano_array2);
-                   
-
-                    if (inTamano_array2 > 0)
+                    try
                     {
-                        
-                       // MessageBox.Show("XX - - - " + stQuery2);  
-                    }
-                    else
-                    {
+                        string cod = (dict["cod_vehiculo"]);
+                        string placa = (dict["placa_vehiculo"]);
+                        string capacidad = (dict["capacidad"]);
+                        string marca = (dict["tx_marca"]);
 
-                        dt.Rows.Add(cod, placa, capacidad, marca);
-                    }
-                       // MessageBox.Show("2XX - - - " + stQuery2);
+
+                        string stQuery2 = "select tbt_vehiculo_cod_vehiculo from tbt_disponibilidadvehiculo where tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo = '" + cod + "' AND (tx_disponibilidadvehiculo = '" + disp1 + "' or tx_disponibilidadvehiculo = '" + disp2 + "' or tx_disponibilidadvehiculo = '" + disp3 + "');";
+                        //              string stQuery2 = "select tbt_vehiculo_cod_vehiculo from tbt_disponibilidadvehiculo where tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo = " + dict["cod_vehiculo"].ToString() + " AND (tx_disponibilidadvehiculo = '" + disp1 + "' or tx_disponibilidadvehiculo = '" + disp2 + "')";
+
+
+                        System.Collections.ArrayList arArray2 = gCon.consultar(stQuery2);
+                        int inTamano_array2 = arArray2.Count;
+
+                        //  Console.WriteLine("ENVIADO: " + inTamano_array2);
+
+
+                        if (inTamano_array2 > 0)
+                        {
+
+                            // MessageBox.Show("XX - - - " + stQuery2);  
+                        }
+                        else
+                        {
+
+                            dt.Rows.Add(cod, placa, capacidad, marca);
+                        }
+                        // MessageBox.Show("2XX - - - " + stQuery2);
                         // dt.Rows.Add("", Convert.ToString(intamanoarray));
-                      //  dt.Rows.Add("1","2","555","FFF");
-                }
-                catch (Exception ff)
-                {
-                    // string k = "--";
-                    //  string B = "--";
-                    //  string C = "--";
-                    //   string D = "--";
-                }
-                    
-                       // Console.WriteLine("CODIGO: " + dict["cod_vehiculo"] + " " + dict["placa_vehiculo"] + " " + dict["capacidad"]);
-                        //
+                        //  dt.Rows.Add("1","2","555","FFF");
+                    }
+                    catch (Exception ff)
+                    {
+                        // string k = "--";
+                        //  string B = "--";
+                        //  string C = "--";
+                        //   string D = "--";
+                    }
 
-                   
-               
+                    // Console.WriteLine("CODIGO: " + dict["cod_vehiculo"] + " " + dict["placa_vehiculo"] + " " + dict["capacidad"]);
+                    //
+
+
+
+                }
+            }
+            catch (Exception s) {
+                Console.WriteLine("Ërror encontrado: " + s);
             }
            
             var source = new BindingSource();

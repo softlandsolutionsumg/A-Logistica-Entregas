@@ -20,13 +20,16 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 {
     public partial class frm_asignacion_vehiculo : Form
     {
-
+        int X = 0;
+        int Y = 0;
         string VEHICULO = "";
             string UBICACION="";
         string RUTA="";
         i3nRiqJson gCon = new i3nRiqJson();
         public frm_asignacion_vehiculo()
         {
+            X = Propp.X;
+            Y = Propp.Y;
             InitializeComponent();
 
             actualizardatos();
@@ -40,19 +43,25 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
         private void frm_asignacion_vehiculo_Load(object sender, EventArgs e)
         {
-
-
+            this.Size = new Size(X, Y);
+            this.Location = new Point(250, 56);
+           
         }
 
         public void actualizardatos() {
-
+            
             Historial_Envios x = new Historial_Envios();
 
             cmb_vehiculos.DataSource = (x.busquedavehiculos("en ruta", "mantenimiento", "disponible"));
             //dataGridView1.DataSource = (x.busquedavehiculos("en ruta", "mantenimiento"));
             cmb_vehiculos.DisplayMember = "placa_vehiculo";
             cmb_vehiculos.ValueMember = "cod_vehiculo";
+            if (cmb_vehiculos.Text.Equals(""))
+            {
+                groupBox2.Visible = false;
 
+
+            }
 
             string Query = "select * from tbm_establecimiento";
             cmb_ubicacion.DataSource = (gCon.consulta_ComboBox(Query));
@@ -62,37 +71,65 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Ubicacion cambia 
             buscarrutas();
         }
 
 
-        public void datagridbuscar() {
+        public void datagridbuscar(int x) {
 
 
             string clausula = "";
-            clausula = this.cmb_ubicacion.Text;
+            clausula = cmb_ubicacion.Text;
+            string Query = "";
+            try
+            {
+                if (x == 1) {
 
-            string Query = "select (select placa_vehiculo from tbt_vehiculo where tbt_vehiculo.cod_vehiculo=tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo)AS Placa,(tx_disponibilidadvehiculo) AS Estado from tbt_disponibilidadvehiculo where tbm_establecimiento_cod_establecimiento=(select cod_establecimiento from tbm_establecimiento where tx_establecimiento ='" + clausula + "')";
-            dt_VxR.DataSource = (gCon.consulta_DataGridView(Query));
+                    Query = "select (select placa_vehiculo from tbt_vehiculo where tbt_vehiculo.cod_vehiculo=tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo)AS Placa,tx_uso AS Uso ,(tx_disponibilidadvehiculo) AS Estado,(select tx_rutas from tbm_rutas where tbm_rutas.idtbm_rutas=tbt_disponibilidadvehiculo.tbm_rutas_idtbm_rutas)AS Ruta from tbt_disponibilidadvehiculo where tbm_establecimiento_cod_establecimiento=(select cod_establecimiento from tbm_establecimiento where tx_establecimiento ='" + clausula + "')";
+                
+                }
+                if (x == 2) {
+                    // subquery
+                    Query = "select (select placa_vehiculo from tbt_vehiculo where tbt_vehiculo.cod_vehiculo=tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo)AS Placa,tx_uso AS Uso ,(tx_disponibilidadvehiculo) AS Estado,(select tx_rutas from tbm_rutas where tbm_rutas.idtbm_rutas=tbt_disponibilidadvehiculo.tbm_rutas_idtbm_rutas)AS Ruta from tbt_disponibilidadvehiculo where tbm_establecimiento_cod_establecimiento=(select cod_establecimiento from tbm_establecimiento where tx_establecimiento ='" + clausula + "')  AND tbm_rutas_idtbm_rutas=(" + cmb_ruta.SelectedValue.ToString() + ")";
+               
+                
+                }
+              //  MessageBox.Show("CONSULTAMOS REALMENTE: "+Query);
+
+                dt_VxR.DataSource = (gCon.consulta_DataGridView(Query));
+                dt_VxR.Visible = true;
+                
+            }
+            catch (Exception c) {
+
+                dt_VxR.Visible = false;
+            }
         
         }
         public void buscarrutas() {
+            Console.WriteLine("Buscar rutas activado");
             string clausula = "";
-            clausula = this.cmb_ubicacion.Text;
+            clausula = cmb_ubicacion.Text;
            // Console.WriteLine("DD: "+clausula);
             string Query = "select idtbm_rutas,tx_rutas from tbm_rutas where tbm_establecimiento_cod_establecimiento=(select cod_establecimiento from tbm_establecimiento where tx_establecimiento ='" + clausula + "')";
             
             
             
-            cmb_ruta.DataSource = (gCon.consulta_ComboBox(Query));
-
+            
             //
             System.Collections.ArrayList arArray2 = gCon.consultar(Query);
             int inTamano_array2 = arArray2.Count;
 
             if (inTamano_array2 > 0) {
-                cmb_ruta.Visible = true;
-                label2.Visible = true;
+               // Console.WriteLine("SE EJECUTO: "+Query);
+                cmb_ruta.DataSource = (gCon.consulta_ComboBox(Query));
+
+                //cmb_ruta.Visible = true;
+              //  label2.Visible = true;
+               pnl_rutas.Visible = true;
+                //Disponible detalles
+
             cmb_ruta.DisplayMember = "tx_rutas";
              cmb_ruta.ValueMember = "idtbm_rutas";
              //datagridbuscar();
@@ -101,29 +138,17 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
             } else {
 
                 dt_VxR.Visible = false;
-            cmb_ruta.Visible = false;
-            label2.Visible=false;
+                pnl_rutas.Visible = false;
+               // cmb_ruta.Visible = false;
+           // label2.Visible=false;
             }
             
             
-            try
-            {
-            
-            }
-            catch (Exception ff) { }
         }
 
         private void barra1_click_buscar_button()
         {
 
-            if (this.cmb_ubicacion.Text.Equals("")) {
-                dt_VxR.Visible = false;
-                MessageBox.Show("Seleccione una ubicacion");
-            } else {
-                dt_VxR.Visible = true;
-                datagridbuscar();
-            }
-            
         }
 
         public void guardarvehiculo() {
@@ -172,15 +197,56 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
         private void barra1_click_guardar_button()
         {
-            guardarvehiculo();
+            
         }
 
         private void barra1_click_actualizar_button()
         {
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+           
+            datagridbuscar(2);
+            buscarrutas(); 
+            
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
             actualizardatos();
-            cmb_ruta.Visible = false;
-            label2.Visible = false;
+            pnl_rutas.Visible = false;
+            // cmb_ruta.Visible = false;
+            //  label2.Visible = false;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+            if ((this.cmb_ubicacion.Text.Equals("")) && (cmb_ruta.Text.Equals("")))
+            {
+                dt_VxR.Visible = false;
+                MessageBox.Show("Seleccione una ubicacion");
+            }
+            else
+            {
+                dt_VxR.Visible = true;
+                datagridbuscar(1); // mostrando todos
+                buscarrutas();
+            }
+            actualizardatos();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            guardarvehiculo();
         }
     }
 }
