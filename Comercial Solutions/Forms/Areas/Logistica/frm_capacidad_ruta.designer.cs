@@ -36,7 +36,6 @@
             this.cmb_ubicacion = new System.Windows.Forms.ComboBox();
             this.cmb_ruta = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.barra1 = new Navegador.Barra();
             ((System.ComponentModel.ISupportInitialize)(this.dt_cpr)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +43,7 @@
             // dt_cpr
             // 
             this.dt_cpr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dt_cpr.Location = new System.Drawing.Point(12, 199);
+            this.dt_cpr.Location = new System.Drawing.Point(12, 111);
             this.dt_cpr.Name = "dt_cpr";
             this.dt_cpr.Size = new System.Drawing.Size(278, 150);
             this.dt_cpr.TabIndex = 0;
@@ -58,7 +57,7 @@
             this.groupBox1.Controls.Add(this.cmb_ubicacion);
             this.groupBox1.Controls.Add(this.cmb_ruta);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 100);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(278, 93);
             this.groupBox1.TabIndex = 8;
@@ -117,25 +116,16 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Ruta:";
             // 
-            // barra1
-            // 
-            this.barra1.BackColor = System.Drawing.Color.Transparent;
-            this.barra1.Location = new System.Drawing.Point(12, 11);
-            this.barra1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barra1.Name = "barra1";
-            this.barra1.Size = new System.Drawing.Size(268, 42);
-            this.barra1.TabIndex = 9;
-            // 
             // frm_capacidad_ruta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(302, 361);
-            this.Controls.Add(this.barra1);
+            this.ClientSize = new System.Drawing.Size(302, 272);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dt_cpr);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_capacidad_ruta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Capacidad Ruta";
@@ -155,7 +145,6 @@
         private System.Windows.Forms.ComboBox cmb_ubicacion;
         private System.Windows.Forms.ComboBox cmb_ruta;
         private System.Windows.Forms.Label label2;
-        private Navegador.Barra barra1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
     }
