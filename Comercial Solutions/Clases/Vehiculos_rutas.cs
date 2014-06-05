@@ -77,33 +77,26 @@ namespace Comercial_Solutions.Clases
 
         public string vehiculosdisponibles(string ruta) {
             string cantidad = "";
-       
-            string query = "select tbt_vehiculo_cod_vehiculo from tbt_disponibilidadvehiculo where tbm_rutas_idtbm_rutas=" + ruta + "";
+
+            string query = "select tbt_vehiculo_cod_vehiculo,(select capacidad from tbt_vehiculo where tbt_vehiculo.cod_vehiculo=tbt_disponibilidadvehiculo.tbt_vehiculo_cod_vehiculo) as capacidad from tbt_disponibilidadvehiculo where tbm_rutas_idtbm_rutas=" + ruta + "";
             
             System.Collections.ArrayList array = gCon.consultar(query);
             int intamanoarray = array.Count;
             int capacidad = 0;
-            
-            foreach (Dictionary<string, string> dict in array)
+            try
             {
-
-                //Console.WriteLine(dict["tbt_vehiculo_cod_vehiculo"]);
-                string query2 = "select capacidad from tbt_vehiculo where cod_vehiculo=" + dict["tbt_vehiculo_cod_vehiculo"] + "";
-
-                System.Collections.ArrayList array2 = gCon.consultar(query2);
-                int intamanoarray2 = array2.Count;
-                foreach (Dictionary<string, string> dict2 in array2)
+                foreach (Dictionary<string, string> dict in array)
                 {
-                    capacidad = capacidad + (Convert.ToInt32(dict2["capacidad"]));
-               //     Console.WriteLine("\t capacidad: " + dict2["capacidad"]+" total"+capacidad);
+                    capacidad = capacidad + (Convert.ToInt32(dict["capacidad"]));
+
+                  
                 }
-                cantidad = "";
-              // Console.WriteLine("Capacidad x Ruta: " + capacidad);
-                cantidad = cantidad+capacidad;
+              
             }
-
-
-
+            catch (Exception e) { }
+           
+            cantidad = cantidad + capacidad;
+        
             return cantidad;
         }
 

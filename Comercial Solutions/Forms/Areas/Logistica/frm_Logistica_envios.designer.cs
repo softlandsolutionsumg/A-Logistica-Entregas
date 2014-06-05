@@ -252,7 +252,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(180, 507);
+            this.button3.Location = new System.Drawing.Point(483, 510);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -265,7 +265,6 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.lbl_busqueda);
-            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.txt_buscar);
@@ -377,6 +376,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(839, 555);
             this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label1);

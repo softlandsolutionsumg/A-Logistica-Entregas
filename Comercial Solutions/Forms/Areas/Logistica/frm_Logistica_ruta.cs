@@ -90,7 +90,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
                     
                     CONFIRMARSI();
                     
-                    //agregar reparando
+            
                     agregar_historial(2);
                   salir();
                 }
@@ -166,19 +166,25 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
             creardetalle();
             creardetalle();
 
-            /*
+            
             Vehiculos_rutas x = new Vehiculos_rutas();
             Fechalaborales c= new Fechalaborales();
             // Console.WriteLine("--" + x.RUTAXDEPARTAMENTO(textBox4.Text));
-            lbl_ruta.Text = (x.RUTAXDEPARTAMENTO(textBox4.Text));
-
-            string viaje=(x.EXISTENCIADEVIAJE(x.RUTAXDEPARTAMENTO(textBox4.Text)));
+            
+            
+            
+             lbl_ruta.Text = (x.RUTAXDEPARTAMENTO(textBox4.Text));
+            
+            string viaje=(x.EXISTENCIADEVIAJE(lbl_ruta.Text));
             stViaje = "";
             stViaje = stViaje + viaje;
             Console.WriteLine("======VIAJE=====>:::::"+viaje+"::");
+
+           
             string cantidadxruta=(x.vehiculosdisponibles(lbl_ruta.Text));
+            Console.WriteLine("TOTAL POR RUTA "+cantidadxruta);
              int cantidadxfactura = (Convert.ToInt32(TOTAL()));
-             Console.WriteLine("TOTAL DE FACTURA: " + cantidadxfactura);
+             Console.WriteLine("TOTAL PARA LA FACTURA: " + cantidadxfactura);
              total = "";
              total = total + cantidadxfactura;
              textBox1.Text = total;
@@ -191,13 +197,15 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
               TOTALFAC = X;
               REFERENCIA = (Y + Z);
               //int YZ = (Y + Z);
-
-            
+            /**
+           **/
 
             //DUDA
-
-            */
-           // lbl_ruta.Text=("hola mundo");
+             // dataGridView3.DataSource = (x.ESPACIOPORVEHICULO(lbl_ruta.Text, c.fechasiguiente() + " 07:00:00"));
+              //-- prbar 
+            //  timer1.Start();
+              dt_Vactual.DataSource = null;
+              VEHICULOSNUEVOS();
         }
 
         private void dataGridView1_Click(object obSender, EventArgs evE)
@@ -257,6 +265,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
         private void button3_Click(object obSender, EventArgs evE)
         {
+            
             AnalizarDATA();
 
            
@@ -309,7 +318,10 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
             try
             {
                 string stQuery1 = "select (select nombre from tbm_departamentos where tbm_departamentos.idtbm_departamentos=(select idtbm_departamentos from tbm_municipio where tbm_municipio.idtbm_municipio=(select idtbm_municipio from tbm_cliente where tbm_cliente.idtbm_cliente=tbm_factura.idtbm_cliente)))AS departamento,(select nombre from tbm_municipio where tbm_municipio.idtbm_municipio=(select idtbm_municipio from tbm_cliente where tbm_cliente.idtbm_cliente=tbm_factura.idtbm_cliente))AS municipio,(select direccion_cliente from tbm_cliente where tbm_cliente.idtbm_cliente=tbm_factura.idtbm_cliente)AS direccion,(select nombre_cliente from tbm_cliente where tbm_cliente.idtbm_cliente=tbm_factura.idtbm_cliente) AS cliente from tbm_factura where no_factura=" + stId_factura + "";
-                string stQuery = "select cantidad AS Cantidad,idtbm_bodega AS Descripcion from tbt_detalle_factura where no_factura=" + stId_factura + "";
+              //  string stQuery = "select cantidad AS Cantidad,idtbm_bodega AS Descripcion from tbt_detalle_factura where no_factura=" + stId_factura + "";
+
+
+                string stQuery = "select cantidad AS Cantidad,(select tx_nombre from tbm_producto_finalizado where tbm_producto_finalizado.	idtbm_producto_finalizado=tbt_detalle_factura.tbm_producto_finalizado_idtbm_producto_finalizado) AS Descripcion from tbt_detalle_factura where no_factura=" + stId_factura + "";
                 System.Collections.ArrayList arArray = gCon.consultar(stQuery1);
                 foreach (Dictionary<string, string> dict in arArray)
                 {
@@ -319,7 +331,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
                     textBox5.Text = dict["municipio"];
                 }
 
-               // ContruirDatagridview(2, stQuery, "");
+                ContruirDatagridview(2, stQuery, "");
 
                 tabControl1.TabPages.Remove(tabPage2);
                 tabControl1.TabPages.Insert(1, tabPage2);
@@ -363,7 +375,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
             foreach (Dictionary<string, string> dict2 in array2)
             {
-                    Console.WriteLine(">>>>>-------");
+                    Console.WriteLine(">>>>>--GG-----");
                     string query = "select id_disponibilidadvehiculo from tbt_detalle_viajes where idtbm_viajes_logistica=" + viaje+ "";
                   // sss
                     System.Collections.ArrayList array = gCon.consultar(query);
@@ -391,7 +403,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
                 }
                     if (xx == 0) { 
                         //Console.WriteLine("Nunca se encontro el vehiculo: " + dict2["id_disponibilidadvehiculo"]+" con capacidad de"+dict2["capacidad"]);
-                   this.dt_Vactual.Rows.Add(dict2["id_disponibilidadvehiculo"],dict2["capacidad"]);
+                  dt_Vactual.Rows.Add(dict2["id_disponibilidadvehiculo"],dict2["capacidad"]);
                     }
             }
         }
@@ -491,7 +503,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
 
             foreach (Dictionary<string, string> dict in array)
             {
-                this.dt_Vactual.Rows.Add(dict["id_disponibilidadvehiculo"], dict["capacidad"]);
+               dt_Vactual.Rows.Add(dict["id_disponibilidadvehiculo"], dict["capacidad"]);
             }
         }
 
@@ -570,6 +582,7 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
         private void timer1_Tick(object sender, EventArgs e)
         {
             //stViaje;
+            Console.WriteLine("TRASPASAR AL DATAGGGGGGGGGG");
             traspasar();
             CAMIONESSINASIGNAR(stViaje);
                ASIGNAR((Convert.ToInt32(textBox1.Text)));
@@ -604,6 +617,11 @@ namespace Comercial_Solutions.Forms.Areas.Logistica
         }
 
         private void txt_buscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }

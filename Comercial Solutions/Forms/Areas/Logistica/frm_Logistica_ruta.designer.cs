@@ -36,11 +36,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_TOTAL = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dt_Vactual = new System.Windows.Forms.DataGridView();
             this.id_disponibilidadvehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.lbl_uu = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lbl_ruta = new System.Windows.Forms.Label();
@@ -56,12 +58,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_buscar = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.lbl_TOTAL = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_busqueda = new System.Windows.Forms.Label();
@@ -78,8 +78,8 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dt_Vactual)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dt_Ruta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -91,7 +91,7 @@
             // 
             // bt_confirmar
             // 
-            this.bt_confirmar.Location = new System.Drawing.Point(174, 504);
+            this.bt_confirmar.Location = new System.Drawing.Point(465, 130);
             this.bt_confirmar.Name = "bt_confirmar";
             this.bt_confirmar.Size = new System.Drawing.Size(75, 23);
             this.bt_confirmar.TabIndex = 12;
@@ -108,7 +108,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 122);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(556, 439);
+            this.tabControl1.Size = new System.Drawing.Size(556, 408);
             this.tabControl1.TabIndex = 11;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
@@ -119,7 +119,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(548, 413);
+            this.tabPage1.Size = new System.Drawing.Size(548, 382);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Rutas Pendientes";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -138,9 +138,12 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.pictureBox1);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.lbl_TOTAL);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.dt_Vactual);
-            this.tabPage2.Controls.Add(this.dataGridView3);
+            this.tabPage2.Controls.Add(this.bt_confirmar);
             this.tabPage2.Controls.Add(this.lbl_uu);
             this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.lbl_ruta);
@@ -159,10 +162,11 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(548, 413);
+            this.tabPage2.Size = new System.Drawing.Size(548, 382);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Detalle envio";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // pictureBox1
             // 
@@ -170,16 +174,40 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(42, 226);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 134);
+            this.pictureBox1.Size = new System.Drawing.Size(187, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(373, 133);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "TOTAL:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(297, 130);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(70, 13);
+            this.textBox1.TabIndex = 16;
+            // 
+            // lbl_TOTAL
+            // 
+            this.lbl_TOTAL.Location = new System.Drawing.Point(424, 133);
+            this.lbl_TOTAL.Name = "lbl_TOTAL";
+            this.lbl_TOTAL.Size = new System.Drawing.Size(18, 22);
+            this.lbl_TOTAL.TabIndex = 14;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(297, 110);
+            this.label9.Location = new System.Drawing.Point(294, 197);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(202, 13);
             this.label9.TabIndex = 18;
@@ -189,13 +217,16 @@
             // 
             this.dt_Vactual.AllowUserToAddRows = false;
             this.dt_Vactual.AllowUserToDeleteRows = false;
+            this.dt_Vactual.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dt_Vactual.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dt_Vactual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_Vactual.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_disponibilidadvehiculo,
             this.Disponible});
-            this.dt_Vactual.Location = new System.Drawing.Point(297, 130);
+            this.dt_Vactual.Location = new System.Drawing.Point(297, 226);
             this.dt_Vactual.Name = "dt_Vactual";
-            this.dt_Vactual.Size = new System.Drawing.Size(243, 220);
+            this.dt_Vactual.RowHeadersVisible = false;
+            this.dt_Vactual.Size = new System.Drawing.Size(243, 150);
             this.dt_Vactual.TabIndex = 17;
             // 
             // id_disponibilidadvehiculo
@@ -207,18 +238,6 @@
             // 
             this.Disponible.HeaderText = "Capacidad disponible";
             this.Disponible.Name = "Disponible";
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(10, 249);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(26, 101);
-            this.dataGridView3.TabIndex = 16;
-            this.dataGridView3.Visible = false;
             // 
             // lbl_uu
             // 
@@ -232,11 +251,10 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(107, 83);
+            this.comboBox1.Location = new System.Drawing.Point(90, 83);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(153, 21);
+            this.comboBox1.Size = new System.Drawing.Size(109, 21);
             this.comboBox1.TabIndex = 14;
-            this.comboBox1.Visible = false;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
@@ -244,7 +262,7 @@
             // 
             this.lbl_ruta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ruta.ForeColor = System.Drawing.Color.Red;
-            this.lbl_ruta.Location = new System.Drawing.Point(492, 106);
+            this.lbl_ruta.Location = new System.Drawing.Point(502, 193);
             this.lbl_ruta.Name = "lbl_ruta";
             this.lbl_ruta.Size = new System.Drawing.Size(38, 21);
             this.lbl_ruta.TabIndex = 12;
@@ -265,10 +283,12 @@
             // 
             this.dt_Ruta.AllowUserToAddRows = false;
             this.dt_Ruta.AllowUserToDeleteRows = false;
+            this.dt_Ruta.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dt_Ruta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_Ruta.Location = new System.Drawing.Point(6, 130);
             this.dt_Ruta.Name = "dt_Ruta";
-            this.dt_Ruta.Size = new System.Drawing.Size(285, 90);
+            this.dt_Ruta.RowHeadersVisible = false;
+            this.dt_Ruta.Size = new System.Drawing.Size(223, 90);
             this.dt_Ruta.TabIndex = 10;
             // 
             // textBox6
@@ -356,6 +376,18 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Destinatario:";
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(19, 189);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.Size = new System.Drawing.Size(230, 162);
+            this.dataGridView3.TabIndex = 16;
+            this.dataGridView3.Visible = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -387,35 +419,9 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lbl_TOTAL
-            // 
-            this.lbl_TOTAL.Location = new System.Drawing.Point(150, 502);
-            this.lbl_TOTAL.Name = "lbl_TOTAL";
-            this.lbl_TOTAL.Size = new System.Drawing.Size(18, 22);
-            this.lbl_TOTAL.TabIndex = 14;
-            this.lbl_TOTAL.Visible = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(90, 507);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "TOTAL:";
-            this.label10.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(14, 504);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(70, 20);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Visible = false;
-            // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 4000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel2
@@ -423,13 +429,10 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.lbl_busqueda);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.lbl_TOTAL);
             this.panel2.Controls.Add(this.txt_buscar);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.bt_confirmar);
+            this.panel2.Controls.Add(this.dataGridView3);
             this.panel2.Location = new System.Drawing.Point(660, 13);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(259, 533);
@@ -548,8 +551,8 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dt_Vactual)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dt_Ruta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
